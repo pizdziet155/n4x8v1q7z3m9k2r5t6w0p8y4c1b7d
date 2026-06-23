@@ -2,7 +2,8 @@
 var params = new URLSearchParams(window.location.search);
 
 function sendTo(url){
-    location.href = `${url}?` + params;
+    const params = window.location.search || "?";
+    location.href = "./" + url + ".html" + params;
 }
 
 document.querySelectorAll(".bottom_element_grid").forEach((element) => {
