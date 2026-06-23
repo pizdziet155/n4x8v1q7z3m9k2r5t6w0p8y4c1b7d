@@ -31,7 +31,7 @@ if (localStorage.getItem("update") == null){
 var date = new Date();
 
 var updateText = document.querySelector(".bottom_update_value");
-updateText.innerHTML = localStorage.getItem("update");
+updateText.innerHTML = "12.01.2026";
 
 var update = document.querySelector(".update");
 update.addEventListener('click', () => {
