@@ -27,7 +27,7 @@ var upload = document.querySelector(".upload");
 
 var imageInput = document.createElement("input");
 imageInput.type = "file";
-imageInput.accept = ".jpeg,.png,.gif";
+imageInput.accept = "image/*";
 
 document.querySelectorAll(".input_holder").forEach((element) => {
 
@@ -55,7 +55,7 @@ imageInput.addEventListener('change', (event) => {
 
     data.append("image", file);
 
-    const API_KEY = "d218f3a71d103ce2fca68e4ec871006d";
+    const API_KEY = "a2736b3f77276659314fcbaea118d511";
 
     fetch("https://api.imgbb.com/1/upload?key=" + API_KEY, {
         method: 'POST',
