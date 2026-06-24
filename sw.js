@@ -1,4 +1,4 @@
-const CACHE_NAME = "pidorv6";
+const CACHE_NAME = "pidorv7";
 
 const FILES_TO_CACHE = [
   "./index.html",
@@ -123,9 +123,15 @@ self.addEventListener("install", event => {
 });
 
 self.addEventListener("fetch", event => {
+  if (event.request.method !== "GET") return;
+
   event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
+    caches.match(event.request).then(cached => {
+      return cached || fetch(event.request).catch(() => {
+        if (event.request.mode === "navigate") {
+          return caches.match("./index.html");
+        }
+      });
     })
   );
 });
