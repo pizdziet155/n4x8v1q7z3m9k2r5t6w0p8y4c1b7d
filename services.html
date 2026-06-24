@@ -113,4 +113,8 @@
 
     <script src="assets/bar.js"></script>
     <script src="assets/manifest.js"></script>
-<div id="monica-content-root" class="monica-widget" style="pointer-events: auto;"></div></body></html>
+<div id="monica-content-root" class="monica-widget" style="pointer-events: auto;"></div><script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js");
+}
+</script></body></html>
