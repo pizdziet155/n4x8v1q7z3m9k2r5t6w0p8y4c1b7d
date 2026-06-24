@@ -1,6 +1,7 @@
-const CACHE_NAME = "pidorv7";
+const CACHE_NAME = "pidorv27";
 
 const FILES_TO_CACHE = [
+  "./",
   "./index.html",
   "./home.html",
   "./card.html",
@@ -106,20 +107,33 @@ const FILES_TO_CACHE = [
 ];
 
 self.addEventListener("install", event => {
-  console.log("SW START");
-
   event.waitUntil(
     caches.open(CACHE_NAME).then(async cache => {
       for (const file of FILES_TO_CACHE) {
         try {
           await cache.add(file);
-          console.log("OK:", file);
         } catch (e) {
-          console.error("BŁĄD:", file, e);
+          console.error("Nie udało się zapisać:", file, e);
         }
       }
     })
   );
+
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => caches.delete(key))
+      );
+    })
+  );
+
+  self.clients.claim();
 });
 
 self.addEventListener("fetch", event => {
