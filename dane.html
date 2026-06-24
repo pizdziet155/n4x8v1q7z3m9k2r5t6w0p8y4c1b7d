@@ -116,11 +116,6 @@
 
     </style>
 </head>
-<script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./sw.js");
-}
-</script>
 <body>
     <div class="top_grid">
         <div class="action_grid">
@@ -258,6 +253,10 @@ if ("serviceWorker" in navigator) {
             document.getElementById("waznosc").textContent = formatDate(expiryDate);
         });
         </script>
-        
+        <script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js");
+}
+</script>
     
 </body>
