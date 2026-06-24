@@ -1,7 +1,6 @@
 const CACHE_NAME = "pidor";
 
 const FILES_TO_CACHE = [
-  "./",
   "./index.html",
   "./home.html",
   "./card.html",
