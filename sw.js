@@ -1,4 +1,20 @@
-const CACHE_NAME = "pidor";
+self.addEventListener("install", event => {
+  console.log("SW START");
+
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(async cache => {
+      for (const file of FILES_TO_CACHE) {
+        try {
+          await cache.add(file);
+          console.log("OK:", file);
+        } catch (e) {
+          console.error("BŁĄD:", file, e);
+        }
+      }
+    })
+  );
+});
+const CACHE_NAME = "pidorv";
 
 const FILES_TO_CACHE = [
   "./index.html",
