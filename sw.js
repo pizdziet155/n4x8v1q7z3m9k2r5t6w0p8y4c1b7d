@@ -1,4 +1,4 @@
-const CACHE_NAME = "pidorv12";
+const CACHE_NAME = "pidorv72";
 
 const FILES_TO_CACHE = [
   "./",
@@ -146,11 +146,25 @@ self.addEventListener("fetch", event => {
 
   event.respondWith(
     caches.match(event.request).then(cached => {
-      return cached || fetch(event.request).catch(() => {
-        if (event.request.mode === "navigate") {
-          return caches.match("./index.html");
-        }
-      });
+      if (cached) {
+        return cached;
+      }
+
+      return fetch(event.request)
+        .then(response => {
+          const copy = response.clone();
+
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, copy);
+          });
+
+          return response;
+        })
+        .catch(() => {
+          return caches.match(event.request);
+        });
     })
+  );
+});
   );
 });
