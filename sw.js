@@ -1,4 +1,4 @@
-const CACHE_NAME = "pidorv9";
+const CACHE_NAME = "pidorv12";
 
 const FILES_TO_CACHE = [
   "./",
@@ -33,8 +33,8 @@ const FILES_TO_CACHE = [
   "./assets/services.css",
   "./assets/txt.txt",
 
-  "./images/00fDslu.png",
-  "./images/00fDslu45.png",
+  "./images/0OfDslu.png",
+  "./images/0OfDslu45.png",
   "./images/1GUMnTn.png",
   "./images/2aN0vJE.png",
   "./images/2eKl73o.png",
@@ -49,14 +49,14 @@ const FILES_TO_CACHE = [
   "./images/ECjKGrW2.png",
   "./images/EhU4eaX.png",
   "./images/KUMNgQC.png",
-  "./images/P6F91tl.png",
+  "./images/P6F91tI.png",
   "./images/Pfan6Qa.png",
   "./images/QkoPqgC.png",
   "./images/R5yccCK.gif",
   "./images/S0u0qjQ.png",
   "./images/SKRJAO0.png",
   "./images/U2xCSkJ.png",
-  "./images/XSZFxrI.png",
+  "./images/XSZFxrl.png",
   "./images/XqGG0UA.png",
   "./images/YJpEaiC.png",
   "./images/YLFqBLa.png",
@@ -64,7 +64,7 @@ const FILES_TO_CACHE = [
   "./images/alertpowodziowy.png",
   "./images/bezpieczniewsieci.png",
   "./images/bonenergetyczny.png",
-  "./images/bonenergetyczny1.png",
+  "./images/bonenergetyczny1png",
   "./images/czlowiek.png",
   "./images/dezaktywuj.png",
   "./images/gTMa9Dw.png",
