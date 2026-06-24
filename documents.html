@@ -10,11 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
 </head>
-<script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./sw.js");
-}
-</script>
 <body>
     <div class="bottom_bar">
         <div class="bottom_bar_grid">
@@ -64,4 +59,9 @@ if ("serviceWorker" in navigator) {
 
     <script src="assets/bar.js"></script>
     <script src="assets/manifest.js"></script>
+    <script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js");
+}
+</script>
 </body>
