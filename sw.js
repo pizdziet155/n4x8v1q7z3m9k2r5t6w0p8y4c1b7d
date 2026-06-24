@@ -1,4 +1,4 @@
-const CACHE_NAME = "pidorv72";
+const CACHE_NAME = "pidor1v15";
 
 const FILES_TO_CACHE = [
   "./",
@@ -113,31 +113,21 @@ const FILES_TO_CACHE = [
 
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(async cache => {
-      for (const file of FILES_TO_CACHE) {
-        try {
-          await cache.add(file);
-        } catch (e) {
-          console.error("Nie udało się zapisać:", file, e);
-        }
-      }
-    })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))
   );
-
   self.skipWaiting();
 });
 
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(
+    caches.keys().then(keys =>
+      Promise.all(
         keys
           .filter(key => key !== CACHE_NAME)
           .map(key => caches.delete(key))
-      );
-    })
+      )
+    )
   );
-
   self.clients.claim();
 });
 
@@ -146,25 +136,17 @@ self.addEventListener("fetch", event => {
 
   event.respondWith(
     caches.match(event.request).then(cached => {
-      if (cached) {
-        return cached;
-      }
+      if (cached) return cached;
 
-      return fetch(event.request)
-        .then(response => {
-          const copy = response.clone();
+      return fetch(event.request).then(response => {
+        const responseClone = response.clone();
 
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, copy);
-          });
-
-          return response;
-        })
-        .catch(() => {
-          return caches.match(event.request);
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, responseClone);
         });
+
+        return response;
+      });
     })
-  );
-});
   );
 });
